@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fsw_store/presentation/home/widgets/categories.dart';
+import 'package:fsw_store/presentation/home/widgets/category_item.dart';
 import 'package:fsw_store/shared/constants/app_images.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -33,15 +35,23 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Center(
-              child: SvgPicture.asset(
-                AppImages.bannerHome01,
-                width: size.width,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Center(
+                child: SvgPicture.asset(
+                  AppImages.bannerHome01,
+                  width: size.width,
+                ),
               ),
-            )
-          ],
+              const SizedBox(
+                height: 16,
+              ),
+
+              // Lista de categorias
+              const Categories(),
+            ],
+          ),
         ),
       ),
     );

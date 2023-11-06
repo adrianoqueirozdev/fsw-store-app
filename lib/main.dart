@@ -22,6 +22,9 @@ class MyApp extends StatelessWidget {
           backgroundColor: AppColors.secondary,
           foregroundColor: Colors.white,
         ),
+        dividerTheme: const DividerThemeData(
+          color: AppColors.tertiary,
+        ),
       ),
       home: const HomeScreen(),
     );

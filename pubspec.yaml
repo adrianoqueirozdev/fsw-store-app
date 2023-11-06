@@ -12,6 +12,8 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.9
+  supabase_flutter: ^1.10.24
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -24,6 +26,8 @@ flutter:
 
   assets:
     - lib/resources/images/
+    - .env.development
+    - .env.production
 
   # fonts:
   #   - family: Schyler

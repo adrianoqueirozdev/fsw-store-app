@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fsw_store/presentation/home/screen/home_screen.dart';
+import 'package:fsw_store/shared/configs/configs_supabase.dart';
+import 'package:fsw_store/shared/constants/environment.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/theme/styles.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: Environment.fileName);
+
+  await ConfigsSupabase.initialize();
+
   runApp(const MyApp());
 }
 

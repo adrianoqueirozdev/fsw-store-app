@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fsw_store/presentation/_blocs/products/products_bloc.dart';
-import 'package:fsw_store/presentation/_blocs/products/products_state.dart';
+import 'package:fsw_store/presentation/_blocs/products_on_offer/products_on_offer_bloc.dart';
+import 'package:fsw_store/presentation/_blocs/products_on_offer/products_on_offer_state.dart';
 import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboards_bloc.dart';
 import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboards_state.dart';
 import 'package:fsw_store/presentation/home/controllers/home_controller.dart';
@@ -60,14 +60,14 @@ class HomeScreen extends StatelessWidget {
 
                   // Ofertas
                   const SectionTitle(text: "Ofertas"),
-                  BlocBuilder<ProductsBloc, ProductsState>(
-                    bloc: controller.productsBloc,
+                  BlocBuilder<ProductsOnOfferBloc, ProductsOnOfferState>(
+                    bloc: controller.productsOnOfferBloc,
                     builder: (context, state) {
-                      if (state is ProductsInitialState) {
+                      if (state is ProductsOnOfferInitialState) {
                         return const Center(
                           child: CircularProgressIndicator(),
                         );
-                      } else if (state is ProductsLoadedState) {
+                      } else if (state is ProductsOnOfferLoadedState) {
                         final products = state.products;
 
                         return ProductList(products: products);

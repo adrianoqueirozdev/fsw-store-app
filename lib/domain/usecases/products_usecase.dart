@@ -8,8 +8,8 @@ class ProductsUsecase {
     _productsRepository = ProductsRepositoryImpl();
   }
 
-  Future<List<Product>> getProducts() async {
-    return await _productsRepository.getProducts();
+  Future<List<Product>> getProductsOnOffer() async {
+    return await _productsRepository.getProductsOnOffer();
   }
 
   Future<List<Product>> getProductsKeyboards() async {

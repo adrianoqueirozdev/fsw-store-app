@@ -44,6 +44,10 @@ class MyApp extends StatelessWidget {
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
+        listTileTheme: const ListTileThemeData(
+          textColor: Colors.white,
+          iconColor: Colors.white,
+        ),
       ),
       home: const HomeScreen(),
     );

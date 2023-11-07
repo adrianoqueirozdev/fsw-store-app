@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fsw_store/shared/constants/app_images.dart';
+import 'package:fsw_store/shared/widgets/app_logo.dart';
 
 class DefaultAppBar extends StatelessWidget {
   const DefaultAppBar({super.key});
@@ -9,10 +8,7 @@ class DefaultAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      title: SvgPicture.asset(
-        AppImages.logo,
-        width: 120,
-      ),
+      title: const AppLogo(),
       actions: [
         IconButton(
           onPressed: () {},

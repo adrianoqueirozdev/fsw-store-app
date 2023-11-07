@@ -1,3 +1,4 @@
+import 'package:fsw_store/data/models/category.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'product.g.dart';
@@ -13,6 +14,8 @@ class Product {
   String categoryId;
   int discountPercentage;
   double totalPrice;
+  @JsonKey(name: "Category")
+  Category? category;
 
   Product({
     required this.id,
@@ -24,6 +27,7 @@ class Product {
     required this.categoryId,
     this.discountPercentage = 0,
     this.totalPrice = 0.0,
+    this.category,
   });
 
   Product copyWith({
@@ -36,6 +40,7 @@ class Product {
     String? categoryId,
     int? discountPercentage,
     double? totalPrice,
+    Category? category,
   }) {
     return Product(
       id: id ?? this.id,
@@ -47,6 +52,7 @@ class Product {
       categoryId: categoryId ?? this.categoryId,
       discountPercentage: discountPercentage ?? this.discountPercentage,
       totalPrice: totalPrice ?? this.totalPrice,
+      category: category ?? this.category,
     );
   }
 

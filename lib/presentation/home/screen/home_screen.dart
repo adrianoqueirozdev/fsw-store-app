@@ -103,6 +103,10 @@ class HomeScreen extends StatelessWidget {
                       }
                     },
                   ),
+
+                  // Banner Fones
+                  const PromoBanner(assetName: AppImages.bannerHeadphones),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),

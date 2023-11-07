@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fsw_store/presentation/_blocs/products/products_bloc.dart';
-import 'package:fsw_store/presentation/_blocs/products/products_state.dart';
 import 'package:fsw_store/presentation/home/controllers/home_controller.dart';
 import 'package:fsw_store/presentation/home/widgets/categories.dart';
-import 'package:fsw_store/presentation/home/widgets/category_item.dart';
+import 'package:fsw_store/presentation/home/widgets/promo_banner.dart';
 import 'package:fsw_store/shared/constants/app_images.dart';
-import 'package:fsw_store/shared/helpers/computed_total_price.dart';
-import 'package:fsw_store/shared/theme/app_colors.dart';
-import 'package:fsw_store/shared/widgets/product_item.dart';
+
 import 'package:fsw_store/shared/widgets/product_list.dart';
 import 'package:fsw_store/shared/widgets/section_title.dart';
 import 'package:get/get.dart';
@@ -19,9 +14,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final textTheme = Theme.of(context).textTheme;
-
     return GetBuilder<HomeController>(
       init: HomeController(),
       builder: (controller) {
@@ -53,12 +45,8 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: SvgPicture.asset(
-                      AppImages.bannerHome01,
-                      width: size.width,
-                    ),
-                  ),
+                  // Banner Ofertas
+                  const PromoBanner(assetName: AppImages.bannerOffers),
                   const SizedBox(height: 16),
 
                   // Lista de categorias
@@ -68,6 +56,10 @@ class HomeScreen extends StatelessWidget {
                   // Ofertas
                   const SectionTitle(text: "Ofertas"),
                   ProductList(productsBloc: controller.productsBloc),
+
+                  // Banner Mouses
+                  const PromoBanner(assetName: AppImages.bannerMouses),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),

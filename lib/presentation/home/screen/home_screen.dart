@@ -8,7 +8,7 @@ import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboa
 import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboards_state.dart';
 import 'package:fsw_store/presentation/home/controllers/home_controller.dart';
 import 'package:fsw_store/presentation/home/widgets/categories.dart';
-import 'package:fsw_store/shared/widgets/custom_drawer.dart';
+import 'package:fsw_store/shared/widgets/custom_drawer/custom_drawer.dart';
 import 'package:fsw_store/shared/widgets/default_app_bar.dart';
 import 'package:fsw_store/presentation/home/widgets/promo_banner.dart';
 import 'package:fsw_store/shared/constants/app_images.dart';

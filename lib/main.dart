@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:fsw_store/presentation/catalog/catalog_screen.dart';
 import 'package:fsw_store/presentation/home/screen/home_screen.dart';
 import 'package:fsw_store/shared/configs/configs_supabase.dart';
 import 'package:fsw_store/shared/constants/environment.dart';
+import 'package:fsw_store/shared/constants/routes.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/theme/styles.dart';
 import 'package:get/get.dart';
@@ -49,7 +51,11 @@ class MyApp extends StatelessWidget {
           iconColor: Colors.white,
         ),
       ),
-      home: const HomeScreen(),
+      initialRoute: Routes.home,
+      routes: {
+        Routes.home: (context) => const HomeScreen(),
+        Routes.catalog: (context) => const CatalogScreen(),
+      },
     );
   }
 }

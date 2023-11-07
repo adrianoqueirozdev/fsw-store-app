@@ -4,4 +4,6 @@ abstract class ProductsRepository {
   Future<List<Product>> getProductsOnOffer();
 
   Future<List<Product>> getProductsKeyboards();
+
+  Future<List<Product>> getProductsMouses();
 }

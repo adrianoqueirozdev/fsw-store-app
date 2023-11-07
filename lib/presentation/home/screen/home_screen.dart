@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fsw_store/presentation/_blocs/products_mouses/products_mouses_bloc.dart';
+import 'package:fsw_store/presentation/_blocs/products_mouses/products_mouses_state.dart';
 import 'package:fsw_store/presentation/_blocs/products_on_offer/products_on_offer_bloc.dart';
 import 'package:fsw_store/presentation/_blocs/products_on_offer/products_on_offer_state.dart';
 import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboards_bloc.dart';
@@ -107,6 +109,27 @@ class HomeScreen extends StatelessWidget {
                   // Banner Fones
                   const PromoBanner(assetName: AppImages.bannerHeadphones),
                   const SizedBox(height: 16),
+
+                  // Mouses
+                  const SectionTitle(text: "Mouses"),
+                  BlocBuilder<ProductsMousesBloc, ProductsMousesState>(
+                    bloc: controller.productsMousesBloc,
+                    builder: (context, state) {
+                      if (state is ProductsMousesInitialState) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (state is ProductsMousesLoadedState) {
+                        final products = state.productsMouses;
+
+                        return ProductList(products: products);
+                      } else {
+                        return const Center(
+                          child: Text("Erro ao carregar produtos"),
+                        );
+                      }
+                    },
+                  ),
                 ],
               ),
             ),

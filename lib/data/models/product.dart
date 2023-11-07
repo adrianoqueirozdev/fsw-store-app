@@ -1,4 +1,3 @@
-import 'package:fsw_store/data/models/category.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'product.g.dart';
@@ -10,11 +9,10 @@ class Product {
   String slug;
   String description;
   double basePrice;
-  List<String> imagesUrls;
+  List<String> imageUrls;
   String categoryId;
-  Category category;
   int discountPercentage;
-  List<dynamic> orderProduct;
+  double totalPrice;
 
   Product({
     required this.id,
@@ -22,12 +20,35 @@ class Product {
     required this.slug,
     required this.description,
     required this.basePrice,
-    required this.imagesUrls,
+    required this.imageUrls,
     required this.categoryId,
-    required this.category,
     this.discountPercentage = 0,
-    required this.orderProduct,
+    this.totalPrice = 0.0,
   });
+
+  Product copyWith({
+    String? id,
+    String? name,
+    String? slug,
+    String? description,
+    double? basePrice,
+    List<String>? imageUrls,
+    String? categoryId,
+    int? discountPercentage,
+    double? totalPrice,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      slug: slug ?? this.slug,
+      description: description ?? this.description,
+      basePrice: basePrice ?? this.basePrice,
+      imageUrls: imageUrls ?? this.imageUrls,
+      categoryId: categoryId ?? this.categoryId,
+      discountPercentage: discountPercentage ?? this.discountPercentage,
+      totalPrice: totalPrice ?? this.totalPrice,
+    );
+  }
 
   factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 

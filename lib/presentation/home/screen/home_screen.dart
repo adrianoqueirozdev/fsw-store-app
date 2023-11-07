@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fsw_store/presentation/_blocs/products/products_bloc.dart';
+import 'package:fsw_store/presentation/_blocs/products/products_state.dart';
+import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboards_bloc.dart';
+import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboards_state.dart';
 import 'package:fsw_store/presentation/home/controllers/home_controller.dart';
 import 'package:fsw_store/presentation/home/widgets/categories.dart';
 import 'package:fsw_store/presentation/home/widgets/promo_banner.dart';
@@ -55,11 +60,49 @@ class HomeScreen extends StatelessWidget {
 
                   // Ofertas
                   const SectionTitle(text: "Ofertas"),
-                  ProductList(productsBloc: controller.productsBloc),
+                  BlocBuilder<ProductsBloc, ProductsState>(
+                    bloc: controller.productsBloc,
+                    builder: (context, state) {
+                      if (state is ProductsInitialState) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (state is ProductsLoadedState) {
+                        final products = state.products;
+
+                        return ProductList(products: products);
+                      } else {
+                        return const Center(
+                          child: Text("Erro ao carregar produtos"),
+                        );
+                      }
+                    },
+                  ),
 
                   // Banner Mouses
                   const PromoBanner(assetName: AppImages.bannerMouses),
                   const SizedBox(height: 16),
+
+                  // Teclados
+                  const SectionTitle(text: "Teclados"),
+                  BlocBuilder<ProductsKeyboardsBloc, ProductsKeyboardsState>(
+                    bloc: controller.productsKeyboardsBloc,
+                    builder: (context, state) {
+                      if (state is ProductsKeyboardsInitialState) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (state is ProductsKeyboardsLoadedState) {
+                        final products = state.productsKeyboards;
+
+                        return ProductList(products: products);
+                      } else {
+                        return const Center(
+                          child: Text("Erro ao carregar produtos"),
+                        );
+                      }
+                    },
+                  ),
                 ],
               ),
             ),

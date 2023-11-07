@@ -10,8 +10,6 @@ class ProductsBloc extends Bloc<ProductsEvents, ProductsState> {
     on<GetProductsEvent>((event, emit) async {
       final data = await _productsUsecase.getProducts();
 
-      print(data[0].toJson());
-
       emit(ProductsLoadedState(products: data));
     });
   }

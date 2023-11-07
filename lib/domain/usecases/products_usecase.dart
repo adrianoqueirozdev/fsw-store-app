@@ -11,4 +11,8 @@ class ProductsUsecase {
   Future<List<Product>> getProducts() async {
     return await _productsRepository.getProducts();
   }
+
+  Future<List<Product>> getProductsKeyboards() async {
+    return await _productsRepository.getProductsKeyboards();
+  }
 }

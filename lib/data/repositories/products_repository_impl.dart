@@ -9,4 +9,11 @@ class ProductsRepositoryImpl implements ProductsRepository {
 
     return data.map((e) => Product.fromJson(e)).toList();
   }
+
+  @override
+  Future<List<Product>> getProductsKeyboards() async {
+    final data = await supabase.from('Product').select('*, Category!inner(*)').eq('Category.slug', 'keyboards') as List;
+
+    return data.map((e) => Product.fromJson(e)).toList();
+  }
 }

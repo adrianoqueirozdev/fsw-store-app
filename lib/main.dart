@@ -6,6 +6,9 @@ import 'package:fsw_store/shared/constants/environment.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/theme/styles.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
+
+var logger = Logger();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

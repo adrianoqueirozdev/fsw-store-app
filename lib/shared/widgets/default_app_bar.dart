@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fsw_store/shared/widgets/app_logo.dart';
 
 class DefaultAppBar extends StatelessWidget {
-  const DefaultAppBar({super.key});
+  final bool showDivider;
+
+  const DefaultAppBar({super.key, this.showDivider = true});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +20,12 @@ class DefaultAppBar extends StatelessWidget {
           ),
         ),
       ],
-      bottom: const PreferredSize(
-        preferredSize: Size.fromHeight(16),
-        child: Divider(),
-      ),
+      bottom: showDivider
+          ? const PreferredSize(
+              preferredSize: Size.fromHeight(16),
+              child: Divider(),
+            )
+          : null,
     );
   }
 }

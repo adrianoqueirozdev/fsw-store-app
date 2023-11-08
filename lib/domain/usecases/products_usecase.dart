@@ -19,4 +19,12 @@ class ProductsUsecase {
   Future<List<Product>> getProductsMouses() async {
     return await _productsRepository.getProductsMouses();
   }
+
+  Future<Product> getProduct(String id) async {
+    return await _productsRepository.getProduct(id);
+  }
+
+  Future<List<Product>> getRecommendedProducts(String slug, String productId) async {
+    return await _productsRepository.getRecommendedProducts(slug, productId);
+  }
 }

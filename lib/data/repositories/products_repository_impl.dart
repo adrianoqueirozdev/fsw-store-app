@@ -23,4 +23,23 @@ class ProductsRepositoryImpl implements ProductsRepository {
 
     return data.map((e) => Product.fromJson(e)).toList();
   }
+
+  @override
+  Future<Product> getProduct(String id) async {
+    final data = await supabase.from('Product').select('*, Category!inner(*)').eq('id', id) as List;
+    return Product.fromJson(data.first);
+  }
+
+  @override
+  Future<List<Product>> getRecommendedProducts(String slug, String productId) async {
+    final data = await supabase.from('Product').select('*, Category!inner(*)').eq('Category.slug', slug) as List;
+
+    // parse json to Product
+    final recommendedProductsList = data.map((e) => Product.fromJson(e)).toList();
+
+    // remove current product from list
+    recommendedProductsList.removeWhere((element) => element.id == productId);
+
+    return recommendedProductsList;
+  }
 }

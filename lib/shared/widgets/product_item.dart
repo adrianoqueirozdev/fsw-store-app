@@ -54,11 +54,14 @@ class ProductItem extends StatelessWidget {
                   },
                 ),
               ),
-              Positioned(
-                top: 8,
-                left: 8,
-                child: DiscountBadge(discountPercentage: product.discountPercentage),
-              )
+              if (product.discountPercentage > 0)
+                Positioned(
+                  top: 8,
+                  left: 8,
+                  child: DiscountBadge(
+                    discountPercentage: product.discountPercentage,
+                  ),
+                )
             ],
           ),
           const SizedBox(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fsw_store/data/models/category.dart';
 import 'package:fsw_store/shared/constants/category_icon.dart';
+import 'package:fsw_store/shared/constants/routes.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
+import 'package:get/get.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;
@@ -14,7 +16,7 @@ class CategoryItem extends StatelessWidget {
 
     return InkWell(
       borderRadius: BorderRadius.circular(10),
-      onTap: () {},
+      onTap: () => Get.toNamed(Routes.categoryProducts, arguments: category.slug),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(

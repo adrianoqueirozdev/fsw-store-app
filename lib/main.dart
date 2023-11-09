@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fsw_store/presentation/catalog/catalog_screen.dart';
+import 'package:fsw_store/presentation/category_products/category_screen.dart';
 import 'package:fsw_store/presentation/home/screen/home_screen.dart';
 import 'package:fsw_store/presentation/product/screen/product_screen.dart';
 import 'package:fsw_store/presentation/deals/deals_screen.dart';
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         Routes.catalog: (context) => const CatalogScreen(),
         Routes.product: (context) => const ProductScreen(),
         Routes.deals: (context) => const DealsScreen(),
+        Routes.categoryProducts: (context) => const CategoryProductsScreen()
       },
     );
   }

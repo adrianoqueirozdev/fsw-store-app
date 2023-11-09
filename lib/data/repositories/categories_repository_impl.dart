@@ -11,4 +11,11 @@ class CategoriesRepositoryImpl implements CategoriesRepository {
 
     return parsed.map((e) => Category.fromJson(e)).toList();
   }
+
+  @override
+  Future<Category> getProductsByCategory(String slug) async {
+    final data = await supabase.from("Category").select('*, Product!inner(*)').eq('slug', slug) as List;
+
+    return Category.fromJson(data.first);
+  }
 }

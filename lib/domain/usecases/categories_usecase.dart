@@ -11,4 +11,8 @@ class CategoriesUsecase {
   Future<List<Category>> getCategories() async {
     return await _categoriesRepository.getCategories();
   }
+
+  Future<Category> getProductsByCategory(String slug) async {
+    return await _categoriesRepository.getProductsByCategory(slug);
+  }
 }

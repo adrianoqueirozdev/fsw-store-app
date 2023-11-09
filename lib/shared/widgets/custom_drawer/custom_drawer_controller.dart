@@ -9,4 +9,8 @@ class CustomDrawerController extends GetxController {
   void navigateToCatalog() {
     Get.toNamed(Routes.catalog);
   }
+
+  void navigateToDeals() {
+    Get.toNamed(Routes.deals);
+  }
 }

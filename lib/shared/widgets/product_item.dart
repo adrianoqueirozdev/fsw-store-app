@@ -6,9 +6,11 @@ import 'package:fsw_store/shared/widgets/discount_badge.dart';
 import 'package:get/get.dart';
 
 class ProductItem extends StatelessWidget {
+  final double? width;
+  final double height;
   final Product product;
 
-  const ProductItem({super.key, required this.product});
+  const ProductItem({super.key, required this.product, this.width, this.height = 160});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +25,8 @@ class ProductItem extends StatelessWidget {
           Stack(
             children: [
               Container(
-                width: size.width / 2.8,
-                height: 160,
+                width: width ?? size.width / 2.8,
+                height: height,
                 alignment: Alignment.center,
                 margin: const EdgeInsets.only(right: 16),
                 padding: const EdgeInsets.all(24),
@@ -62,43 +64,46 @@ class ProductItem extends StatelessWidget {
           const SizedBox(
             height: 4,
           ),
-          SizedBox(
-            width: size.width / 2.8,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.name,
-                  style: textTheme.bodySmall,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "R\$ ${product.totalPrice.toStringAsFixed(2)}",
-                      style: textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Flexible(
-                      child: Text(
-                        "R\$ ${product.basePrice.toStringAsFixed(2)}",
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: textTheme.bodySmall?.copyWith(
-                          decoration: TextDecoration.lineThrough,
-                          color: Colors.grey.shade600,
-                          decorationColor: Colors.grey.shade600,
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: SizedBox(
+              width: width ?? size.width / 2.8,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style: textTheme.bodySmall,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "R\$ ${product.totalPrice.toStringAsFixed(2)}",
+                        style: textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  ],
-                )
-              ],
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Flexible(
+                        child: Text(
+                          "R\$ ${product.basePrice.toStringAsFixed(2)}",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: textTheme.bodySmall?.copyWith(
+                            decoration: TextDecoration.lineThrough,
+                            color: Colors.grey.shade600,
+                            decorationColor: Colors.grey.shade600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ],

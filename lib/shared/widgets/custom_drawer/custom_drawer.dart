@@ -83,7 +83,7 @@ class CustomDrawer extends StatelessWidget {
                     DrawerItem(
                       title: "Ofertas",
                       icon: Icons.percent_outlined,
-                      onTap: () {},
+                      onTap: controller.navigateToDeals,
                     ),
                     DrawerItem(
                       title: "Catálogo",

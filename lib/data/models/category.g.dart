@@ -11,7 +11,7 @@ Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       imageUrl: json['imageUrl'] as String?,
-      products: (json['products'] as List<dynamic>?)
+      products: (json['Product'] as List<dynamic>?)
           ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -21,5 +21,5 @@ Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
       'name': instance.name,
       'slug': instance.slug,
       'imageUrl': instance.imageUrl,
-      'products': instance.products,
+      'Product': instance.products,
     };

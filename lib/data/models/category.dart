@@ -9,6 +9,7 @@ class Category {
   String? name;
   String? slug;
   String? imageUrl;
+  @JsonKey(name: "Product")
   List<Product>? products;
 
   Category({
@@ -16,7 +17,7 @@ class Category {
     required this.name,
     required this.slug,
     required this.imageUrl,
-    required this.products,
+    this.products,
   });
 
   Category copyWith({

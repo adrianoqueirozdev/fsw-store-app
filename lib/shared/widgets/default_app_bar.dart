@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fsw_store/data/models/cart.dart';
+import 'package:fsw_store/shared/constants/routes.dart';
+import 'package:fsw_store/shared/cubits/cart_cubit.dart';
 import 'package:fsw_store/shared/widgets/app_logo.dart';
+import 'package:get/get.dart';
 
 class DefaultAppBar extends StatelessWidget {
   final bool showDivider;
@@ -13,10 +18,15 @@ class DefaultAppBar extends StatelessWidget {
       title: const AppLogo(),
       actions: [
         IconButton(
-          onPressed: () {},
-          icon: Badge.count(
-            count: 3,
-            child: const Icon(Icons.shopping_cart),
+          onPressed: () => Get.toNamed(Routes.cart),
+          icon: BlocBuilder<CartCubit, Cart>(
+            builder: (context, state) {
+              return Badge.count(
+                isLabelVisible: state.products.isNotEmpty,
+                count: state.products.length,
+                child: const Icon(Icons.shopping_cart),
+              );
+            },
           ),
         ),
       ],

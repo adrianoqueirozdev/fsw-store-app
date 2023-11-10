@@ -6,7 +6,7 @@ import 'package:fsw_store/presentation/_blocs/product/product_bloc.dart';
 import 'package:fsw_store/presentation/_blocs/product/product_state.dart';
 import 'package:fsw_store/presentation/product/controllers/product_controller.dart';
 import 'package:fsw_store/presentation/product/widgets/product_images/product_images.dart';
-import 'package:fsw_store/presentation/product/widgets/product_info.dart';
+import 'package:fsw_store/presentation/product/widgets/product_info/product_info.dart';
 import 'package:fsw_store/shared/helpers/computed_total_price.dart';
 import 'package:fsw_store/shared/widgets/default_app_bar.dart';
 import 'package:fsw_store/shared/widgets/preferred_size_app_bar.dart';

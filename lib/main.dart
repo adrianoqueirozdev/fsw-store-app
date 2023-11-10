@@ -1,6 +1,9 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:fsw_store/presentation/cart/screen/cart_screen.dart';
 import 'package:fsw_store/presentation/catalog/catalog_screen.dart';
 import 'package:fsw_store/presentation/category_products/category_screen.dart';
@@ -14,14 +17,20 @@ import 'package:fsw_store/shared/cubits/cart_cubit.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/theme/styles.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 var logger = Logger();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  Intl.defaultLocale = 'pt_BR';
+
   await dotenv.load(fileName: Environment.fileName);
+
+  Stripe.publishableKey = Environment.stripePublishableKey;
 
   await ConfigsSupabase.initialize();
 
@@ -68,6 +77,12 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [Locale('pt', 'BR')],
         initialRoute: Routes.home,
         routes: {
           Routes.home: (context) => const HomeScreen(),

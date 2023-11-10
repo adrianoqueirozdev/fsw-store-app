@@ -20,6 +20,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       category: json['Category'] == null
           ? null
           : Category.fromJson(json['Category'] as Map<String, dynamic>),
+      quantity: json['quantity'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
@@ -33,4 +34,5 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'discountPercentage': instance.discountPercentage,
       'totalPrice': instance.totalPrice,
       'Category': instance.category,
+      'quantity': instance.quantity,
     };

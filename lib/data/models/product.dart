@@ -1,5 +1,7 @@
-import 'package:fsw_store/data/models/category.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:json_annotation/json_annotation.dart';
+
+import 'package:fsw_store/data/models/category.dart';
 
 part 'product.g.dart';
 
@@ -16,6 +18,7 @@ class Product {
   double totalPrice;
   @JsonKey(name: "Category")
   Category? category;
+  int quantity;
 
   Product({
     required this.id,
@@ -28,7 +31,12 @@ class Product {
     this.discountPercentage = 0,
     this.totalPrice = 0.0,
     this.category,
+    this.quantity = 0,
   });
+
+  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductToJson(this);
 
   Product copyWith({
     String? id,
@@ -41,6 +49,7 @@ class Product {
     int? discountPercentage,
     double? totalPrice,
     Category? category,
+    int? quantity,
   }) {
     return Product(
       id: id ?? this.id,
@@ -53,10 +62,7 @@ class Product {
       discountPercentage: discountPercentage ?? this.discountPercentage,
       totalPrice: totalPrice ?? this.totalPrice,
       category: category ?? this.category,
+      quantity: quantity ?? this.quantity,
     );
   }
-
-  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ProductToJson(this);
 }

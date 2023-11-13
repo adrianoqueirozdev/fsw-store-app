@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "665851020675",
+    "project_id": "fsw-store-app",
+    "storage_bucket": "fsw-store-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665851020675:android:da6c12f712d538208722b6",
+        "android_client_info": {
+          "package_name": "com.example.fsw_store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKK5qXA__oi3c3GWZkwjvCvEQt5DJi-Yc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

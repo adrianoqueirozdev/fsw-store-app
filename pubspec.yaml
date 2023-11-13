@@ -22,6 +22,7 @@ dependencies:
   flutter_stripe: ^9.5.0+1
   http: ^1.1.0
   intl: ^0.18.1
+  firebase_core: ^2.22.0
 
 dev_dependencies:
   flutter_test:

@@ -16,9 +16,7 @@ class HttpConfig {
   }
 
   Future<dynamic> get(String url, [Map<String, dynamic>? queryParameters]) async {
-    final uri = Uri.parse("$_baseUrl$url").replace(
-      queryParameters: queryParameters,
-    );
+    final uri = Uri.parse("$_baseUrl$url").replace(queryParameters: queryParameters);
     dynamic responseJson;
 
     try {

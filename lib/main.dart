@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -29,6 +30,16 @@ void main() async {
   Intl.defaultLocale = 'pt_BR';
 
   await dotenv.load(fileName: Environment.fileName);
+
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: Environment.apiKey,
+      appId: Environment.appId,
+      messagingSenderId: Environment.messagingSenderId,
+      projectId: Environment.projectId,
+      storageBucket: Environment.storageBucket,
+    ),
+  );
 
   Stripe.publishableKey = Environment.stripePublishableKey;
 
@@ -82,7 +93,9 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: const [Locale('pt', 'BR')],
+        supportedLocales: const [
+          Locale('pt', 'BR'),
+        ],
         initialRoute: Routes.home,
         routes: {
           Routes.home: (context) => const HomeScreen(),

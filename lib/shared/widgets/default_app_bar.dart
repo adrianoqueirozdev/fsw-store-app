@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fsw_store/data/models/cart.dart';
 import 'package:fsw_store/shared/constants/routes.dart';
 import 'package:fsw_store/shared/cubits/cart_cubit.dart';
+import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/widgets/app_logo.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,7 @@ class DefaultAppBar extends StatelessWidget {
           icon: BlocBuilder<CartCubit, Cart>(
             builder: (context, state) {
               return Badge.count(
+                backgroundColor: AppColors.primary,
                 isLabelVisible: state.products.isNotEmpty,
                 count: state.products.length,
                 child: const Icon(Icons.shopping_cart),

@@ -7,6 +7,8 @@ import 'package:fsw_store/shared/constants/category_icon.dart';
 import 'package:fsw_store/shared/widgets/default_app_bar.dart';
 import 'package:fsw_store/shared/widgets/preferred_size_app_bar.dart';
 import 'package:fsw_store/shared/widgets/product_list_grid.dart';
+import 'package:fsw_store/shared/widgets/products_list_grid_shimmer.dart';
+import 'package:fsw_store/shared/widgets/shimmer_item.dart';
 import 'package:fsw_store/shared/widgets/title_screen.dart';
 import 'package:get/get.dart';
 
@@ -33,15 +35,27 @@ class CategoryProductsScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TitleScreen(
-                      label: isLoading ? 'Carregando...' : category!.name!,
-                      icon: isLoading ? Icons.pending : CategoryIcon.categoryIcon[category!.slug!]!,
+                    Builder(
+                      builder: (context) {
+                        return switch (state.runtimeType) {
+                          CategoryProductsInitialState => const ShimmerItem(
+                              height: 38,
+                              width: 130,
+                              borderRadius: 100,
+                            ),
+                          CategoryProductsLoadedState => TitleScreen(
+                              label: isLoading ? 'Carregando...' : category!.name!,
+                              icon: isLoading ? Icons.pending : CategoryIcon.categoryIcon[category!.slug!]!,
+                            ),
+                          _ => const SizedBox.shrink()
+                        };
+                      },
                     ),
                     const SizedBox(height: 16),
                     Builder(
                       builder: (context) {
                         return switch (state.runtimeType) {
-                          CategoryProductsInitialState => const SizedBox.shrink(),
+                          CategoryProductsInitialState => const ProductsListGridShimmer(),
                           CategoryProductsLoadedState => ProductListGrid(products: category!.products!),
                           _ => const SizedBox.shrink()
                         };

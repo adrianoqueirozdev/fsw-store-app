@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fsw_store/data/models/product.dart';
 import 'package:fsw_store/presentation/cart/widgets/cart_item/cart_item_controller.dart';
+import 'package:fsw_store/shared/helpers/format_currency_brl.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/widgets/cart_group_buttons.dart';
 import 'package:fsw_store/shared/widgets/custom_icon_button.dart';
@@ -59,7 +60,7 @@ class CartItem extends StatelessWidget {
                           children: [
                             Flexible(
                               child: Text(
-                                "R\$ ${product.totalPrice.toStringAsFixed(2)}",
+                                "R\$ ${formatCurrencyBrl(product.totalPrice)}",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: textTheme.bodyLarge?.copyWith(
@@ -70,7 +71,7 @@ class CartItem extends StatelessWidget {
                             const SizedBox(width: 4),
                             Flexible(
                               child: Text(
-                                "R\$ ${product.basePrice.toStringAsFixed(2)}",
+                                "R\$ ${formatCurrencyBrl(product.basePrice)}",
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
                                 style: textTheme.bodyMedium?.copyWith(

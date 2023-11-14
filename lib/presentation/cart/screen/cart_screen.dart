@@ -5,6 +5,7 @@ import 'package:fsw_store/presentation/cart/controllers/cart_controller.dart';
 import 'package:fsw_store/presentation/cart/widgets/cart_info.dart';
 import 'package:fsw_store/presentation/cart/widgets/cart_item/cart_item.dart';
 import 'package:fsw_store/shared/cubits/cart_cubit.dart';
+import 'package:fsw_store/shared/helpers/format_currency_brl.dart';
 import 'package:fsw_store/shared/widgets/title_screen.dart';
 import 'package:get/get.dart';
 
@@ -45,7 +46,7 @@ class CartScreen extends StatelessWidget {
                           const Divider(),
                           CartInfo(
                             text: "Subtotal",
-                            value: "R\$ ${state.subtotal.toStringAsFixed(2)}",
+                            value: "R\$ ${formatCurrencyBrl(state.subtotal)}",
                           ),
                           const Divider(),
                           const CartInfo(
@@ -55,12 +56,12 @@ class CartScreen extends StatelessWidget {
                           const Divider(),
                           CartInfo(
                             text: "Descontos",
-                            value: "- R\$ ${state.totalDiscount.toStringAsFixed(2)}",
+                            value: "- R\$ ${formatCurrencyBrl(state.totalDiscount)}",
                           ),
                           const Divider(),
                           CartInfo(
                             text: "Total",
-                            value: "R\$ ${state.total.toStringAsFixed(2)}",
+                            value: "R\$ ${formatCurrencyBrl(state.total)}",
                             style: textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),

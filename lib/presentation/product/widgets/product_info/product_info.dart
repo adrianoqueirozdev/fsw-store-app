@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fsw_store/data/models/product.dart';
 import 'package:fsw_store/presentation/product/widgets/product_images/product_images.dart';
 import 'package:fsw_store/presentation/product/widgets/product_info/product_info_controller.dart';
+import 'package:fsw_store/shared/helpers/format_currency_brl.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/widgets/cart_group_buttons.dart';
 import 'package:fsw_store/shared/widgets/discount_badge.dart';
@@ -39,7 +40,7 @@ class ProductInfo extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "R\$ ${product.totalPrice.toStringAsFixed(2)}",
+                          "R\$ ${formatCurrencyBrl(product.totalPrice)}",
                           style: textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -53,7 +54,7 @@ class ProductInfo extends StatelessWidget {
                         text: "De: ",
                         children: [
                           TextSpan(
-                            text: "R\$ ${product.basePrice.toStringAsFixed(2)}",
+                            text: "R\$ ${formatCurrencyBrl(product.basePrice)}",
                             style: textTheme.bodySmall?.copyWith(
                               decoration: TextDecoration.lineThrough,
                               decorationColor: Colors.grey.shade600,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fsw_store/data/models/product.dart';
 import 'package:fsw_store/shared/constants/routes.dart';
+import 'package:fsw_store/shared/helpers/format_currency_brl.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/widgets/discount_badge.dart';
 import 'package:get/get.dart';
@@ -83,7 +84,7 @@ class ProductItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "R\$ ${product.totalPrice.toStringAsFixed(2)}",
+                        "R\$ ${formatCurrencyBrl(product.totalPrice)}",
                         style: textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -93,7 +94,7 @@ class ProductItem extends StatelessWidget {
                       ),
                       Flexible(
                         child: Text(
-                          "R\$ ${product.basePrice.toStringAsFixed(2)}",
+                          "R\$ ${formatCurrencyBrl(product.basePrice)}",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: textTheme.bodySmall?.copyWith(

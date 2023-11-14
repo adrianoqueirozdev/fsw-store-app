@@ -8,6 +8,7 @@ import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboa
 import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboards_state.dart';
 import 'package:fsw_store/presentation/home/controllers/home_controller.dart';
 import 'package:fsw_store/presentation/home/widgets/categories.dart';
+import 'package:fsw_store/shared/constants/routes.dart';
 import 'package:fsw_store/shared/widgets/custom_drawer/custom_drawer.dart';
 import 'package:fsw_store/shared/widgets/default_app_bar.dart';
 import 'package:fsw_store/presentation/home/widgets/promo_banner.dart';
@@ -36,7 +37,10 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Banner Ofertas
-                  const PromoBanner(assetName: AppImages.bannerOffers),
+                  PromoBanner(
+                    assetName: AppImages.bannerOffers,
+                    onTap: () => Get.toNamed(Routes.deals),
+                  ),
                   const SizedBox(height: 16),
 
                   // Lista de categorias
@@ -57,7 +61,10 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   // Banner Mouses
-                  const PromoBanner(assetName: AppImages.bannerMouses),
+                  PromoBanner(
+                    assetName: AppImages.bannerMouses,
+                    onTap: () => Get.toNamed(Routes.categoryProducts, arguments: 'mouses'),
+                  ),
                   const SizedBox(height: 16),
 
                   // Teclados
@@ -74,7 +81,10 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   // Banner Fones
-                  const PromoBanner(assetName: AppImages.bannerHeadphones),
+                  PromoBanner(
+                    assetName: AppImages.bannerHeadphones,
+                    onTap: () => Get.toNamed(Routes.categoryProducts, arguments: 'headphones'),
+                  ),
                   const SizedBox(height: 16),
 
                   // Mouses

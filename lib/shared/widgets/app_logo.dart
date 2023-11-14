@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fsw_store/shared/constants/app_images.dart';
+import 'package:fsw_store/shared/constants/routes.dart';
+import 'package:get/get.dart';
 
 class AppLogo extends StatelessWidget {
   final double width;
@@ -9,9 +11,12 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      AppImages.logo,
-      width: width,
+    return GestureDetector(
+      onTap: () => Get.offAllNamed(Routes.home),
+      child: SvgPicture.asset(
+        AppImages.logo,
+        width: width,
+      ),
     );
   }
 }

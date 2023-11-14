@@ -15,7 +15,13 @@ class CustomDrawer extends StatelessWidget {
 
     return GetBuilder<CustomDrawerController>(
       init: CustomDrawerController(),
+      global: false,
       builder: (controller) {
+        final currentUser = controller.currentUser;
+        final name = currentUser?.name != null ? currentUser!.name! : "Olá, visitante";
+        final photoUrl = currentUser!.photoUrl != null ? currentUser.photoUrl! : '';
+        final hasUser = currentUser.uid != null;
+
         return Drawer(
           backgroundColor: AppColors.secondary,
           surfaceTintColor: AppColors.secondary,
@@ -33,13 +39,13 @@ class CustomDrawer extends StatelessWidget {
                     const SizedBox(height: 16),
                     Row(
                       children: [
-                        const CircleAvatar(),
+                        CircleAvatar(backgroundImage: photoUrl.isNotEmpty ? NetworkImage(photoUrl) : null),
                         const SizedBox(width: 8),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Adriano Queiroz",
+                              name,
                               style: textTheme.titleMedium,
                             ),
                             Text(
@@ -65,11 +71,18 @@ class CustomDrawer extends StatelessWidget {
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   children: [
-                    DrawerItem(
-                      title: "Fazer Login",
-                      icon: Icons.login_outlined,
-                      onTap: () {},
-                    ),
+                    if (!hasUser)
+                      DrawerItem(
+                        title: "Fazer Login",
+                        icon: Icons.login_outlined,
+                        onTap: controller.loginWithGoogle,
+                      ),
+                    if (hasUser)
+                      DrawerItem(
+                        title: "Fazer Logout",
+                        icon: Icons.logout_outlined,
+                        onTap: controller.logout,
+                      ),
                     DrawerItem(
                       title: "Início",
                       icon: Icons.home_outlined,

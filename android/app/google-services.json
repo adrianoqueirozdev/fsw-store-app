@@ -1,26 +1,44 @@
 {
   "project_info": {
-    "project_number": "665851020675",
-    "project_id": "fsw-store-app",
-    "storage_bucket": "fsw-store-app.appspot.com"
+    "project_number": "928855675538",
+    "project_id": "app-fsw-store",
+    "storage_bucket": "app-fsw-store.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:665851020675:android:da6c12f712d538208722b6",
+        "mobilesdk_app_id": "1:928855675538:android:207a78c0ba7b285182cc4b",
         "android_client_info": {
           "package_name": "com.example.fsw_store"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "928855675538-k0aq7qqhqccrcs6kk0pl077ouje7qre1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fsw_store",
+            "certificate_hash": "6571ae7efc2373ad8f41195d012ce207374b195b"
+          }
+        },
+        {
+          "client_id": "928855675538-3f6qa803hhbs4pjtld13vuis9n2thjkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyAKK5qXA__oi3c3GWZkwjvCvEQt5DJi-Yc"
+          "current_key": "AIzaSyAMwGPDqu5xEvvGDTHfkNKiqvItNS00ed4"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928855675538-3f6qa803hhbs4pjtld13vuis9n2thjkj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

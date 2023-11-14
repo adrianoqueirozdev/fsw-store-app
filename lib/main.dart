@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:fsw_store/presentation/cart/screen/cart_screen.dart';
-import 'package:fsw_store/presentation/catalog/catalog_screen.dart';
+import 'package:fsw_store/presentation/catalog/screen/catalog_screen.dart';
 import 'package:fsw_store/presentation/category_products/category_screen.dart';
 import 'package:fsw_store/presentation/home/screen/home_screen.dart';
 import 'package:fsw_store/presentation/product/screen/product_screen.dart';

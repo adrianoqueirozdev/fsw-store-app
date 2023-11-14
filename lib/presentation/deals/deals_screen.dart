@@ -7,6 +7,7 @@ import 'package:fsw_store/shared/widgets/custom_drawer/custom_drawer.dart';
 import 'package:fsw_store/shared/widgets/default_app_bar.dart';
 import 'package:fsw_store/shared/widgets/preferred_size_app_bar.dart';
 import 'package:fsw_store/shared/widgets/product_list_grid.dart';
+import 'package:fsw_store/shared/widgets/products_list_grid_shimmer.dart';
 import 'package:fsw_store/shared/widgets/title_screen.dart';
 import 'package:get/get.dart';
 
@@ -34,14 +35,11 @@ class DealsScreen extends StatelessWidget {
                 BlocBuilder<ProductsOnOfferBloc, ProductsOnOfferState>(
                   bloc: controller.productsOnOfferBloc,
                   builder: (context, state) {
-                    switch (state.runtimeType) {
-                      case ProductsOnOfferInitialState:
-                        return const SizedBox.shrink();
-                      case ProductsOnOfferLoadedState:
-                        return ProductListGrid(products: state.products);
-                      default:
-                        return const SizedBox.shrink();
-                    }
+                    return switch (state.runtimeType) {
+                      ProductsOnOfferInitialState => const ProductsListGridShimmer(),
+                      ProductsOnOfferLoadedState => ProductListGrid(products: state.products),
+                      _ => const SizedBox.shrink()
+                    };
                   },
                 )
               ],

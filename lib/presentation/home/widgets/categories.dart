@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fsw_store/presentation/_blocs/categories/categories_bloc.dart';
 import 'package:fsw_store/presentation/_blocs/categories/categories_state.dart';
+import 'package:fsw_store/presentation/home/widgets/categories_shimmer.dart';
 import 'package:fsw_store/presentation/home/widgets/category_item.dart';
 
 class Categories extends StatelessWidget {
@@ -15,10 +16,7 @@ class Categories extends StatelessWidget {
       bloc: categoriesBloc,
       builder: (context, state) {
         if (state is CategoriesInitialState) {
-          // TODO: implementar loading skeleton
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const CategoriesShimmer();
         } else if (state is CategoriesLoadedState) {
           final categories = state.categories ?? [];
 

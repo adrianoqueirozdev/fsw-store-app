@@ -26,6 +26,7 @@ dependencies:
   firebase_auth: ^4.13.0
   google_sign_in: ^6.1.6
   shimmer: ^3.0.0
+  cached_network_image: ^3.3.0
 
 dev_dependencies:
   flutter_test:

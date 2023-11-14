@@ -3,6 +3,7 @@ import 'package:fsw_store/data/models/product.dart';
 import 'package:fsw_store/shared/constants/routes.dart';
 import 'package:fsw_store/shared/helpers/format_currency_brl.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
+import 'package:fsw_store/shared/widgets/cached_network_image_widget.dart';
 import 'package:fsw_store/shared/widgets/discount_badge.dart';
 import 'package:get/get.dart';
 
@@ -26,35 +27,16 @@ class ProductItem extends StatelessWidget {
           Stack(
             children: [
               Container(
-                width: width ?? size.width / 2.8,
-                height: height,
-                alignment: Alignment.center,
-                margin: const EdgeInsets.only(right: 16),
-                padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  color: AppColors.onSecondaryContainer,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Image.network(
-                  product.imageUrls[0],
-                  fit: BoxFit.contain,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    }
-                    final progress = loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                        : null;
-
-                    return Center(
-                      child: CircularProgressIndicator(value: progress),
-                    );
-                  },
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.error);
-                  },
-                ),
-              ),
+                  width: width ?? size.width / 2.8,
+                  height: height,
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(right: 16),
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    color: AppColors.onSecondaryContainer,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: CachedNetworkImageWidget(imageUrl: product.imageUrls[0])),
               if (product.discountPercentage > 0)
                 Positioned(
                   top: 8,

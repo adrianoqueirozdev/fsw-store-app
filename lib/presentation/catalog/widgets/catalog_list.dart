@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fsw_store/data/models/category.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
+import 'package:fsw_store/shared/widgets/cached_network_image_widget.dart';
 
 class CatalogList extends StatelessWidget {
   final List<Category> categories;
@@ -38,28 +39,7 @@ class CatalogList extends StatelessWidget {
                   end: Alignment.topRight,
                 ),
               ),
-              child: Image.network(
-                category.imageUrl!,
-                fit: BoxFit.contain,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child;
-                  }
-
-                  final progress = loadingProgress.expectedTotalBytes != null
-                      ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                      : null;
-
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: progress,
-                    ),
-                  );
-                },
-                errorBuilder: (context, error, stackTrace) {
-                  return const Icon(Icons.error_outline);
-                },
-              ),
+              child: CachedNetworkImageWidget(imageUrl: category.imageUrl!),
             ),
             Positioned(
               bottom: 0,

@@ -3,6 +3,7 @@ import 'package:fsw_store/data/models/product.dart';
 import 'package:fsw_store/presentation/cart/widgets/cart_item/cart_item_controller.dart';
 import 'package:fsw_store/shared/helpers/format_currency_brl.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
+import 'package:fsw_store/shared/widgets/cached_network_image_widget.dart';
 import 'package:fsw_store/shared/widgets/cart_group_buttons.dart';
 import 'package:fsw_store/shared/widgets/custom_icon_button.dart';
 import 'package:get/get.dart';
@@ -37,8 +38,8 @@ class CartItem extends StatelessWidget {
                       color: AppColors.onSecondaryContainer,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Image.network(
-                      product.imageUrls[0],
+                    child: CachedNetworkImageWidget(
+                      imageUrl: product.imageUrls[0],
                     ),
                   ),
                   const SizedBox(width: 16),

@@ -7,6 +7,7 @@ class ShimmerItem extends StatelessWidget {
   final double height;
   final double borderRadius;
   final BorderRadiusGeometry? border;
+  final ShimmerDirection direction;
 
   const ShimmerItem({
     super.key,
@@ -15,6 +16,7 @@ class ShimmerItem extends StatelessWidget {
     this.height = 16,
     this.borderRadius = 4,
     this.border,
+    this.direction = ShimmerDirection.ltr,
   });
 
   @override
@@ -25,6 +27,7 @@ class ShimmerItem extends StatelessWidget {
       width: size ?? width,
       height: size ?? height,
       child: Shimmer.fromColors(
+        direction: direction,
         baseColor: colorScheme.tertiary.withOpacity(.5),
         highlightColor: colorScheme.tertiary.withOpacity(.7),
         child: Container(

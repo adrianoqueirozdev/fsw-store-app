@@ -21,6 +21,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get_storage/get_storage.dart';
 
 var logger = Logger();
 
@@ -30,6 +31,8 @@ void main() async {
   Intl.defaultLocale = 'pt_BR';
 
   await dotenv.load(fileName: Environment.fileName);
+
+  await GetStorage.init();
 
   await Firebase.initializeApp(
     options: FirebaseOptions(

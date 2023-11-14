@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fsw_store/data/models/cart.dart';
 import 'package:fsw_store/data/models/product.dart';
+import 'package:fsw_store/shared/constants/get_storage_keys.dart';
+import 'package:get_storage/get_storage.dart';
 
 class CartCubit extends Cubit<Cart> {
   CartCubit()
@@ -26,6 +28,8 @@ class CartCubit extends Cubit<Cart> {
       total: total,
       totalDiscount: totalDiscount,
     ));
+
+    _saveToGetStorage(state.products);
   }
 
   void decreaseProductQuantity(String productId) {
@@ -41,6 +45,8 @@ class CartCubit extends Cubit<Cart> {
       totalDiscount: _calculateTotalDiscount(currentStateProducts),
       total: _calculateTotal(currentStateProducts),
     ));
+
+    _saveToGetStorage(state.products);
   }
 
   void increaseProductQuantity(String productId) {
@@ -56,6 +62,8 @@ class CartCubit extends Cubit<Cart> {
       totalDiscount: _calculateTotalDiscount(currentStateProducts),
       total: _calculateTotal(currentStateProducts),
     ));
+
+    _saveToGetStorage(state.products);
   }
 
   void removeProductFromCart(String productId) {
@@ -68,6 +76,8 @@ class CartCubit extends Cubit<Cart> {
       totalDiscount: _calculateTotalDiscount(newProducts),
       total: _calculateTotal(newProducts),
     ));
+
+    _saveToGetStorage(state.products);
   }
 
   double _calculateTotal(List<Product> products) {
@@ -91,5 +101,9 @@ class CartCubit extends Cubit<Cart> {
     }
 
     return state.products;
+  }
+
+  void _saveToGetStorage(List<Product> products) async {
+    GetStorage().write(GetStorageKeys.products, products);
   }
 }

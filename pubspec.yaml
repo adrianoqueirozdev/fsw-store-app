@@ -28,6 +28,7 @@ dependencies:
   shimmer: ^3.0.0
   cached_network_image: ^3.3.0
   get_storage: ^2.1.1
+  readmore: ^2.2.0
 
 dev_dependencies:
   flutter_test:

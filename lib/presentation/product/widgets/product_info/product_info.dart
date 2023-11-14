@@ -7,6 +7,7 @@ import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/widgets/cart_group_buttons.dart';
 import 'package:fsw_store/shared/widgets/discount_badge.dart';
 import 'package:get/get.dart';
+import 'package:readmore/readmore.dart';
 
 class ProductInfo extends StatelessWidget {
   final Product product;
@@ -15,7 +16,6 @@ class ProductInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final textTheme = Theme.of(context).textTheme;
 
     return GetBuilder<ProductInfoController>(
@@ -81,15 +81,23 @@ class ProductInfo extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 6),
-                    SizedBox(
-                      width: size.width,
-                      child: Text(
-                        product.description,
-                        maxLines: 3,
-                        overflow: TextOverflow.fade,
-                        style: textTheme.bodySmall?.copyWith(
-                          color: Colors.grey.shade500,
-                        ),
+                    ReadMoreText(
+                      product.description,
+                      colorClickableText: AppColors.primary,
+                      trimLines: 2,
+                      trimLength: 160,
+                      trimCollapsedText: 'Ver mais',
+                      trimExpandedText: ' Ver menos',
+                      style: textTheme.bodySmall?.copyWith(
+                        color: Colors.grey.shade500,
+                      ),
+                      moreStyle: textTheme.bodySmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primary,
+                      ),
+                      lessStyle: textTheme.bodySmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primary,
                       ),
                     ),
                     const SizedBox(height: 16),

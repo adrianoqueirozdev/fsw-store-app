@@ -61,7 +61,7 @@ class CartItem extends StatelessWidget {
                           children: [
                             Flexible(
                               child: Text(
-                                "R\$ ${formatCurrencyBrl(product.totalPrice)}",
+                                formatCurrencyBrl(product.totalPrice),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: textTheme.bodyLarge?.copyWith(
@@ -72,7 +72,7 @@ class CartItem extends StatelessWidget {
                             const SizedBox(width: 4),
                             Flexible(
                               child: Text(
-                                "R\$ ${formatCurrencyBrl(product.basePrice)}",
+                                formatCurrencyBrl(product.basePrice),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
                                 style: textTheme.bodyMedium?.copyWith(

@@ -46,7 +46,7 @@ class CartScreen extends StatelessWidget {
                           const Divider(),
                           CartInfo(
                             text: "Subtotal",
-                            value: "R\$ ${formatCurrencyBrl(state.subtotal)}",
+                            value: formatCurrencyBrl(state.subtotal),
                           ),
                           const Divider(),
                           const CartInfo(
@@ -56,12 +56,12 @@ class CartScreen extends StatelessWidget {
                           const Divider(),
                           CartInfo(
                             text: "Descontos",
-                            value: "- R\$ ${formatCurrencyBrl(state.totalDiscount)}",
+                            value: "- ${formatCurrencyBrl(state.totalDiscount)}",
                           ),
                           const Divider(),
                           CartInfo(
                             text: "Total",
-                            value: "R\$ ${formatCurrencyBrl(state.total)}",
+                            value: formatCurrencyBrl(state.total),
                             style: textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),

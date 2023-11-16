@@ -40,7 +40,7 @@ class ProductInfo extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "R\$ ${formatCurrencyBrl(product.totalPrice)}",
+                          formatCurrencyBrl(product.totalPrice),
                           style: textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -54,7 +54,7 @@ class ProductInfo extends StatelessWidget {
                         text: "De: ",
                         children: [
                           TextSpan(
-                            text: "R\$ ${formatCurrencyBrl(product.basePrice)}",
+                            text: formatCurrencyBrl(product.basePrice),
                             style: textTheme.bodySmall?.copyWith(
                               decoration: TextDecoration.lineThrough,
                               decorationColor: Colors.grey.shade600,

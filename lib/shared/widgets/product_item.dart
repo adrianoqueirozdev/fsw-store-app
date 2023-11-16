@@ -66,7 +66,7 @@ class ProductItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "R\$ ${formatCurrencyBrl(product.totalPrice)}",
+                        formatCurrencyBrl(product.totalPrice),
                         style: textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -76,7 +76,7 @@ class ProductItem extends StatelessWidget {
                       ),
                       Flexible(
                         child: Text(
-                          "R\$ ${formatCurrencyBrl(product.basePrice)}",
+                          formatCurrencyBrl(product.basePrice),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: textTheme.bodySmall?.copyWith(

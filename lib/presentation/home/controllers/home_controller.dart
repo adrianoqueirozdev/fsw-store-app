@@ -18,10 +18,6 @@ class HomeController extends GetxController {
   late final ProductsKeyboardsBloc productsKeyboardsBloc;
   late final ProductsMousesBloc productsMousesBloc;
 
-  void _readProductsOnTheGetStorage() {
-    context.read<CartCubit>().state.products = readProductsOnTheGetStorage();
-  }
-
   @override
   void onInit() {
     categoriesBloc = CategoriesBloc();
@@ -34,7 +30,7 @@ class HomeController extends GetxController {
     productsKeyboardsBloc.add(GetProductsKeyboardsEvent());
     productsMousesBloc.add(GetProductsMousesEvent());
 
-    _readProductsOnTheGetStorage();
+    context.read<CartCubit>().setInitialState(readProductsOnTheGetStorage());
 
     super.onInit();
   }

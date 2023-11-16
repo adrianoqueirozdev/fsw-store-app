@@ -15,6 +15,15 @@ class CartCubit extends Cubit<Cart> {
             subtotal: 0,
             totalDiscount: 0));
 
+  void setInitialState(List<Product> products) {
+    emit(state.copyWith(
+      products: products,
+      subtotal: _calculateSubtotal(products),
+      totalDiscount: _calculateTotalDiscount(products),
+      total: _calculateTotal(products),
+    ));
+  }
+
   void addProductToCart(Product product) {
     final updatedProducts = _updateProductList(product);
 

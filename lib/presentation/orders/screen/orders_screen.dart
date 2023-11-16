@@ -4,6 +4,7 @@ import 'package:fsw_store/presentation/_blocs/orders/orders_bloc.dart';
 import 'package:fsw_store/presentation/_blocs/orders/orders_state.dart';
 import 'package:fsw_store/presentation/orders/controllers/orders_controller.dart';
 import 'package:fsw_store/presentation/orders/widgets/order_list.dart';
+import 'package:fsw_store/presentation/orders/widgets/order_list_shimmer.dart';
 import 'package:fsw_store/shared/widgets/custom_drawer/custom_drawer.dart';
 import 'package:fsw_store/shared/widgets/default_app_bar.dart';
 import 'package:fsw_store/shared/widgets/preferred_size_app_bar.dart';
@@ -17,6 +18,7 @@ class OrdersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<OrdersController>(
       init: OrdersController(),
+      global: false,
       builder: (controller) {
         return Scaffold(
           drawer: const CustomDrawer(),
@@ -36,7 +38,7 @@ class OrdersScreen extends StatelessWidget {
                     bloc: controller.ordersBloc,
                     builder: (context, state) {
                       return switch (state.runtimeType) {
-                        OrdersInitialState => const SizedBox.shrink(),
+                        OrdersInitialState => const OrderListShimmer(),
                         OrdersLoadedState => OrderList(orders: state.orders),
                         _ => const SizedBox.shrink()
                       };

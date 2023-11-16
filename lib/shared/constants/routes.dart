@@ -5,4 +5,5 @@ sealed class Routes {
   static const String deals = '/deals';
   static const String categoryProducts = '/category-products';
   static const String cart = '/cart';
+  static const String orders = '/orders';
 }

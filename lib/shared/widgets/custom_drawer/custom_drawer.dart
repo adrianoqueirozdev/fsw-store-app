@@ -91,7 +91,7 @@ class CustomDrawer extends StatelessWidget {
                     DrawerItem(
                       title: "Meus Pedidos",
                       icon: Icons.inventory_2_outlined,
-                      onTap: () {},
+                      onTap: controller.navigateToOrders,
                     ),
                     DrawerItem(
                       title: "Ofertas",

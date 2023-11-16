@@ -15,6 +15,8 @@ class CustomDrawerController extends GetxController {
 
   void navigateToDeals() => Get.toNamed(Routes.deals);
 
+  void navigateToOrders() => Get.toNamed(Routes.orders);
+
   void loginWithGoogle() async {
     final user = await SignInGoogleService.signInWithGoogle();
 

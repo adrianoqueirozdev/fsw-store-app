@@ -9,6 +9,7 @@ import 'package:fsw_store/presentation/cart/screen/cart_screen.dart';
 import 'package:fsw_store/presentation/catalog/screen/catalog_screen.dart';
 import 'package:fsw_store/presentation/category_products/category_screen.dart';
 import 'package:fsw_store/presentation/home/screen/home_screen.dart';
+import 'package:fsw_store/presentation/orders/screen/orders_screen.dart';
 import 'package:fsw_store/presentation/product/screen/product_screen.dart';
 import 'package:fsw_store/presentation/deals/deals_screen.dart';
 import 'package:fsw_store/shared/configs/configs_supabase.dart';
@@ -106,7 +107,8 @@ class MyApp extends StatelessWidget {
           Routes.product: (context) => const ProductScreen(),
           Routes.deals: (context) => const DealsScreen(),
           Routes.categoryProducts: (context) => const CategoryProductsScreen(),
-          Routes.cart: (context) => const CartScreen()
+          Routes.cart: (context) => const CartScreen(),
+          Routes.orders: (context) => const OrdersScreen(),
         },
       ),
     );

@@ -12,12 +12,17 @@ class TitleScreen extends StatelessWidget {
     return Chip(
       backgroundColor: AppColors.secondary,
       shape: const StadiumBorder(),
-      side: BorderSide(color: AppColors.primary),
+      side: const BorderSide(color: AppColors.primary),
       avatar: Icon(
         icon,
         color: Colors.white,
       ),
-      label: Text(label.toUpperCase()),
+      label: Text(
+        label.toUpperCase(),
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+      ),
     );
   }
 }

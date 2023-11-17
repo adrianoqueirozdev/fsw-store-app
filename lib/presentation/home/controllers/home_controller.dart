@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fsw_store/presentation/_blocs/categories/categories_bloc.dart';
 import 'package:fsw_store/presentation/_blocs/categories/categories_events.dart';
 import 'package:fsw_store/presentation/_blocs/products_mouses/products_mouses_bloc.dart';
@@ -7,12 +6,9 @@ import 'package:fsw_store/presentation/_blocs/products_on_offer/products_on_offe
 import 'package:fsw_store/presentation/_blocs/products_on_offer/products_on_offer_events.dart';
 import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboards_bloc.dart';
 import 'package:fsw_store/presentation/_blocs/products_keyboards/products_keyboards_events.dart';
-import 'package:fsw_store/shared/cubits/cart_cubit.dart';
-import 'package:fsw_store/shared/helpers/read_products_on_the_get_storage.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  final context = Get.context!;
   late final CategoriesBloc categoriesBloc;
   late final ProductsOnOfferBloc productsOnOfferBloc;
   late final ProductsKeyboardsBloc productsKeyboardsBloc;
@@ -29,8 +25,6 @@ class HomeController extends GetxController {
     productsOnOfferBloc.add(GetProductsOnOfferEvent());
     productsKeyboardsBloc.add(GetProductsKeyboardsEvent());
     productsMousesBloc.add(GetProductsMousesEvent());
-
-    context.read<CartCubit>().setInitialState(readProductsOnTheGetStorage());
 
     super.onInit();
   }

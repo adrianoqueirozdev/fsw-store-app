@@ -8,6 +8,7 @@ import 'package:fsw_store/presentation/home/screen/home_screen.dart';
 import 'package:fsw_store/presentation/orders/screen/orders_screen.dart';
 import 'package:fsw_store/presentation/product/screen/product_screen.dart';
 import 'package:fsw_store/presentation/deals/deals_screen.dart';
+import 'package:fsw_store/presentation/splash/splash_screen.dart';
 import 'package:fsw_store/shared/constants/routes.dart';
 import 'package:fsw_store/shared/cubits/cart_cubit.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
@@ -65,8 +66,9 @@ class App extends StatelessWidget {
         supportedLocales: const [
           Locale('pt', 'BR'),
         ],
-        initialRoute: Routes.home,
+        initialRoute: Routes.splash,
         routes: {
+          Routes.splash: (context) => const SplashScreen(),
           Routes.home: (context) => const HomeScreen(),
           Routes.catalog: (context) => const CatalogScreen(),
           Routes.product: (context) => const ProductScreen(),

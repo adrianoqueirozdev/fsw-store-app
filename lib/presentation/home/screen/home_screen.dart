@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       init: HomeController(),
+      global: false,
       builder: (controller) {
         return Scaffold(
           drawer: const CustomDrawer(),

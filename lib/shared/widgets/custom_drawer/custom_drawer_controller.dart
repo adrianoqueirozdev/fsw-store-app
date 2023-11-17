@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fsw_store/data/models/current_user.dart';
 import 'package:fsw_store/shared/constants/routes.dart';
-import 'package:fsw_store/shared/services/sign_in_google.dart';
+import 'package:fsw_store/shared/services/sign_in_google_service.dart';
 import 'package:get/get.dart';
 
 class CustomDrawerController extends GetxController {

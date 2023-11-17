@@ -19,8 +19,8 @@ class CustomDrawer extends StatelessWidget {
       builder: (controller) {
         final currentUser = controller.currentUser;
         final name = currentUser?.name != null ? currentUser!.name! : "Olá, visitante";
-        final photoUrl = currentUser!.photoUrl != null ? currentUser.photoUrl! : '';
-        final hasUser = currentUser.uid != null;
+        final photoUrl = currentUser!.image != null ? currentUser.image! : '';
+        final hasUser = currentUser.id != null;
 
         return Drawer(
           backgroundColor: AppColors.secondary,

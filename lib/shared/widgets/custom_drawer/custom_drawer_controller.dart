@@ -33,7 +33,7 @@ class CustomDrawerController extends GetxController {
   }
 
   CurrentUser _parseToCurrentUser(User user) {
-    return CurrentUser(uid: user.uid, name: user.displayName, photoUrl: user.photoURL);
+    return CurrentUser(id: user.uid, name: user.displayName, image: user.photoURL, email: user.email);
   }
 
   @override

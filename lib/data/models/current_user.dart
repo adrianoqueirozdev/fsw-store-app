@@ -1,11 +1,15 @@
 class CurrentUser {
+  String? id;
   String? name;
-  String? photoUrl;
-  String? uid;
+  String? email;
+  String? emailVerified;
+  String? image;
 
   CurrentUser({
+    this.id,
     this.name,
-    this.photoUrl,
-    this.uid,
+    this.email,
+    this.emailVerified,
+    this.image,
   });
 }

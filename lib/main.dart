@@ -27,7 +27,5 @@ void main() async {
   Stripe.publishableKey = Environment.stripePublishableKey;
   await ConfigsSupabase.initialize();
 
-  await Future.delayed(const Duration(seconds: 3));
-
   runApp(const App());
 }

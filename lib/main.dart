@@ -17,6 +17,7 @@ import 'package:fsw_store/shared/constants/environment.dart';
 import 'package:fsw_store/shared/constants/routes.dart';
 import 'package:fsw_store/shared/cubits/cart_cubit.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
+import 'package:fsw_store/shared/theme/app_fonts.dart';
 import 'package:fsw_store/shared/theme/styles.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -62,12 +63,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => CartCubit()),
       ],
       child: GetMaterialApp(
-        title: 'Flutter Demo',
+        title: 'FSW Store',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textTheme: Styles.textTheme(),
           colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
           useMaterial3: true,
+          fontFamily: AppFonts.poppins,
           scaffoldBackgroundColor: AppColors.secondary,
           appBarTheme: AppBarTheme(
             scrolledUnderElevation: 0,

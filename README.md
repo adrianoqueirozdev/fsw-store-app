@@ -12,13 +12,13 @@ Loja online
 ## Screenshots
 
 ### Tela inicial
-![Alt text](screenshots/home.png)
+![Home](screenshots/home.png)
 
-### Tela de Produto
-![Alt text](screenshots/product.png)
+### Tela de produto
+![Product](screenshots/product.png)
 
 ### Tela do carrinho de compras
-![Alt text](screenshots/cart.png)
+![Cart](screenshots/cart.png)
 
 ### Tela dos pedidos
-![Alt text](screenshots/orders.png)
+![Orders](screenshots/orders.png)

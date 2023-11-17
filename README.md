@@ -31,6 +31,7 @@ Loja online
  - [expandable](https://pub.dev/packages/expandable): Usado para widgets que se expandem.
  - [build_runner](https://pub.dev/packages/build_runner)
  - [json_serializable](https://pub.dev/packages/json_serializable)
+ - [flutter_animate](https://pub.dev/packages/flutter_animate): Usado para criar animações
     
   
 ## Capturas de Tela

@@ -19,3 +19,22 @@ class OrdersErrorState extends OrdersState {
 
   OrdersErrorState({required this.message}) : super(orders: []);
 }
+
+// Create order
+class CreateOrderInitialState extends OrdersState {
+  final String? userId;
+
+  CreateOrderInitialState({this.userId}) : super(orders: []);
+}
+
+class CreateOrderLoadedState extends OrdersState {
+  final String? orderId;
+
+  CreateOrderLoadedState({required this.orderId}) : super(orders: []);
+}
+
+class CreateOrderErrorState extends OrdersState {
+  final String message;
+
+  CreateOrderErrorState({required this.message}) : super(orders: []);
+}

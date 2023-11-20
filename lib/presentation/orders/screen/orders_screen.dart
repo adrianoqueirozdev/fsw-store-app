@@ -5,6 +5,7 @@ import 'package:fsw_store/presentation/_blocs/orders/orders_state.dart';
 import 'package:fsw_store/presentation/orders/controllers/orders_controller.dart';
 import 'package:fsw_store/presentation/orders/widgets/order_list.dart';
 import 'package:fsw_store/presentation/orders/widgets/order_list_shimmer.dart';
+import 'package:fsw_store/shared/services/sign_in_google_service.dart';
 import 'package:fsw_store/shared/widgets/custom_drawer/custom_drawer.dart';
 import 'package:fsw_store/shared/widgets/default_app_bar.dart';
 import 'package:fsw_store/shared/widgets/preferred_size_app_bar.dart';
@@ -16,6 +17,8 @@ class OrdersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUser = SignInGoogleService.auth.currentUser;
+
     return GetBuilder<OrdersController>(
       init: OrdersController(),
       global: false,
@@ -33,18 +36,20 @@ class OrdersScreen extends StatelessWidget {
                   icon: Icons.shopping_basket_outlined,
                 ),
                 const SizedBox(height: 16),
-                Expanded(
-                  child: BlocBuilder<OrdersBloc, OrdersState>(
-                    bloc: controller.ordersBloc,
-                    builder: (context, state) {
-                      return switch (state.runtimeType) {
-                        OrdersInitialState => const OrderListShimmer(),
-                        OrdersLoadedState => OrderList(orders: state.orders),
-                        _ => const SizedBox.shrink()
-                      };
-                    },
-                  ),
-                )
+                if (currentUser == null) const Text("Faça login para visualizar seus pedidos"),
+                if (currentUser != null)
+                  Expanded(
+                    child: BlocBuilder<OrdersBloc, OrdersState>(
+                      bloc: controller.ordersBloc,
+                      builder: (context, state) {
+                        return switch (state.runtimeType) {
+                          OrdersInitialState => const OrderListShimmer(),
+                          OrdersLoadedState => OrderList(orders: state.orders),
+                          _ => const SizedBox.shrink()
+                        };
+                      },
+                    ),
+                  )
               ],
             ),
           ),

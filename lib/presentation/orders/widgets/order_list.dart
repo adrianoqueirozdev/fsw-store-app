@@ -9,6 +9,13 @@ class OrderList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (orders.isEmpty) {
+      return const Text(
+        "Ainda não há pedidos em sua lista. Que tal explorar"
+        " nossos produtos incríveis e adicionar algo ao seu carrinho?",
+      );
+    }
+
     return ListView.builder(
       itemCount: orders.length,
       itemBuilder: (context, index) => OrderItem(order: orders[index]),

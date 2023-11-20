@@ -7,7 +7,7 @@ class StripeUsecase {
     _stripeRepositoryImpl = StripeRepositoryImpl();
   }
 
-  Future createPaymentIntent(int amount) async {
-    return await _stripeRepositoryImpl.createPaymentIntent(amount);
+  Future createPaymentIntent(int amount, String orderId) async {
+    return await _stripeRepositoryImpl.createPaymentIntent(amount, orderId);
   }
 }

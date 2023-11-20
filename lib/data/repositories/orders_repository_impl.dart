@@ -7,10 +7,11 @@ import 'package:uuid/uuid.dart';
 
 class OrdersRepositoryImpl extends OrdersRepository {
   @override
-  Future<List<Order>> getOrders() async {
+  Future<List<Order>> getOrders(String userId) async {
     final data = await supabase
         .from(DatabaseTables.order)
-        .select('*, ${DatabaseTables.orderProduct}!inner(*, ${DatabaseTables.product}!inner(*))') as List;
+        .select('*, ${DatabaseTables.orderProduct}!inner(*, ${DatabaseTables.product}!inner(*))')
+        .eq('userId', userId) as List;
 
     return data.map((order) => Order.fromJson(order)).toList();
   }

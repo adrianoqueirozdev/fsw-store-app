@@ -9,8 +9,8 @@ class OrdersUsecase {
     _ordersRepository = OrdersRepositoryImpl();
   }
 
-  Future<List<Order>> getOrders() async {
-    return await _ordersRepository.getOrders();
+  Future<List<Order>> getOrders(String userId) async {
+    return await _ordersRepository.getOrders(userId);
   }
 
   Future<String?> createOrder(List<Product> products, String userId) async {

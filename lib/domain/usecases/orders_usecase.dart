@@ -16,4 +16,8 @@ class OrdersUsecase {
   Future<String?> createOrder(List<Product> products, String userId) async {
     return await _ordersRepository.createOrder(products, userId);
   }
+
+  Future<void> updateOrder(String orderId) async {
+    return await _ordersRepository.updateOrder(orderId);
+  }
 }

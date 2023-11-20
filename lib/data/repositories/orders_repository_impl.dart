@@ -50,4 +50,9 @@ class OrdersRepositoryImpl extends OrdersRepository {
 
     return orderId;
   }
+
+  @override
+  Future<void> updateOrder(String orderId) async {
+    await supabase.from('Order').update({'status': 'PAYMENT_CONFIRMED'}).eq('id', orderId);
+  }
 }

@@ -6,4 +6,6 @@ abstract class OrdersRepository extends BaseRepository {
   Future<List<Order>> getOrders(String userId);
 
   Future<String?> createOrder(List<Product> products, String userId);
+
+  Future<void> updateOrder(String orderId);
 }

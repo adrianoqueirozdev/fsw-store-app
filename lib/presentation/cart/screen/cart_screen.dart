@@ -32,13 +32,21 @@ class CartScreen extends StatelessWidget {
                       label: "Carrinho",
                       icon: Icons.shopping_cart,
                     ),
-                    Expanded(
-                      child: ListView.builder(
-                        padding: const EdgeInsets.only(top: 16),
-                        itemCount: state.products.length,
-                        itemBuilder: (context, index) => CartItem(product: state.products[index]),
+                    if (state.products.isNotEmpty)
+                      Expanded(
+                        child: ListView.builder(
+                          padding: const EdgeInsets.only(top: 16),
+                          itemCount: state.products.length,
+                          itemBuilder: (context, index) => CartItem(product: state.products[index]),
+                        ),
                       ),
-                    ),
+                    if (state.products.isEmpty)
+                      const Padding(
+                        padding: EdgeInsets.only(top: 24),
+                        child: Text(
+                          "Seu carrinho está vazio, mas não se preocupe, temos muitas novidades esperando por você! Vamos às compras?",
+                        ),
+                      ),
                     if (state.products.isNotEmpty)
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

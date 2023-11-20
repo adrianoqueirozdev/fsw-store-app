@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/widgets/app_logo.dart';
@@ -39,7 +40,9 @@ class CustomDrawer extends StatelessWidget {
                     const SizedBox(height: 16),
                     Row(
                       children: [
-                        CircleAvatar(backgroundImage: photoUrl.isNotEmpty ? NetworkImage(photoUrl) : null),
+                        CircleAvatar(
+                          backgroundImage: photoUrl.isNotEmpty ? CachedNetworkImageProvider(photoUrl) : null,
+                        ),
                         const SizedBox(width: 8),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

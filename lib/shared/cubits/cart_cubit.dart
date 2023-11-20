@@ -4,16 +4,18 @@ import 'package:fsw_store/data/models/product.dart';
 import 'package:fsw_store/shared/constants/get_storage_keys.dart';
 import 'package:get_storage/get_storage.dart';
 
+final _initialState = Cart(
+  products: [],
+  cartTotalPrice: 0,
+  cartBasePrice: 0,
+  cartTotalDiscount: 0,
+  total: 0,
+  subtotal: 0,
+  totalDiscount: 0,
+);
+
 class CartCubit extends Cubit<Cart> {
-  CartCubit()
-      : super(Cart(
-            products: [],
-            cartTotalPrice: 0,
-            cartBasePrice: 0,
-            cartTotalDiscount: 0,
-            total: 0,
-            subtotal: 0,
-            totalDiscount: 0));
+  CartCubit() : super(_initialState);
 
   void setInitialState(List<Product> products) {
     emit(state.copyWith(
@@ -87,6 +89,11 @@ class CartCubit extends Cubit<Cart> {
     ));
 
     _saveToGetStorage(state.products);
+  }
+
+  void reset() {
+    emit(_initialState);
+    GetStorage().remove(GetStorageKeys.products);
   }
 
   double _calculateTotal(List<Product> products) {

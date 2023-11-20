@@ -11,7 +11,8 @@ class OrdersRepositoryImpl extends OrdersRepository {
     final data = await supabase
         .from(DatabaseTables.order)
         .select('*, ${DatabaseTables.orderProduct}!inner(*, ${DatabaseTables.product}!inner(*))')
-        .eq('userId', userId) as List;
+        .eq('userId', userId)
+        .order('createdAt') as List;
 
     return data.map((order) => Order.fromJson(order)).toList();
   }

@@ -13,14 +13,20 @@ class OrdersBloc extends Bloc<OrdersEvents, OrdersState> {
   void _mapEventToState(OrdersEvents event, Emitter<OrdersState> emit) async {
     if (event is GetOrdersEvent) {
       emit(OrdersInitialState());
-      final data = await _orderUsecase.getOrders(event.userId);
+      final data = await _orderUsecase.getOrders(event.userId!);
       emit(OrdersLoadedState(orders: data));
     }
 
     if (event is CreateOrderEvent) {
       emit(CreateOrderInitialState());
-      final data = await _orderUsecase.createOrder(event.products, event.userId);
+      final data = await _orderUsecase.createOrder(event.products, event.userId!);
       emit(CreateOrderLoadedState(orderId: data));
+    }
+
+    if (event is UpdateOrderEvent) {
+      emit(UpdateOrderInitialState());
+      await _orderUsecase.updateOrder(event.orderId);
+      emit(UpdateOrderLoadedState());
     }
   }
 }

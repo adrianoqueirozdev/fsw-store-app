@@ -1,9 +1,9 @@
 import 'package:fsw_store/data/models/product.dart';
 
 abstract class OrdersEvents {
-  final String userId;
+  final String? userId;
 
-  OrdersEvents({required this.userId});
+  OrdersEvents({this.userId});
 }
 
 class GetOrdersEvent extends OrdersEvents {
@@ -14,4 +14,10 @@ class CreateOrderEvent extends OrdersEvents {
   final List<Product> products;
 
   CreateOrderEvent({required String userId, required this.products}) : super(userId: userId);
+}
+
+class UpdateOrderEvent extends OrdersEvents {
+  final String orderId;
+
+  UpdateOrderEvent({required this.orderId});
 }

@@ -38,3 +38,18 @@ class CreateOrderErrorState extends OrdersState {
 
   CreateOrderErrorState({required this.message}) : super(orders: []);
 }
+
+// Update order
+class UpdateOrderInitialState extends OrdersState {
+  UpdateOrderInitialState() : super(orders: []);
+}
+
+class UpdateOrderLoadedState extends OrdersState {
+  UpdateOrderLoadedState() : super(orders: []);
+}
+
+class UpdateOrderErrorState extends OrdersState {
+  final String message;
+
+  UpdateOrderErrorState({required this.message}) : super(orders: []);
+}

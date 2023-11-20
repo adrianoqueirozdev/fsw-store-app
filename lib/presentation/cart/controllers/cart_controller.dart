@@ -45,13 +45,17 @@ class CartController extends GetxController {
 
           try {
             await Stripe.instance.presentPaymentSheet();
-            cartCubit.reset();
-            Get.back();
-            Get.toNamed(Routes.orders);
+            _ordersBloc.add(UpdateOrderEvent(orderId: orderId));
           } catch (e) {
             logger.e("[CartController.handleFinishPurchase]: $e");
           }
         }
+      }
+
+      if (state is UpdateOrderLoadedState) {
+        cartCubit.reset();
+        Get.back();
+        Get.toNamed(Routes.orders);
       }
     });
 

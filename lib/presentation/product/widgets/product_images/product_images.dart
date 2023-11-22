@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fsw_store/presentation/product/screens/gallery_image/gallery_image_screen.dart';
 import 'package:fsw_store/presentation/product/widgets/product_images/product_images_controller.dart';
 import 'package:fsw_store/shared/theme/app_colors.dart';
 import 'package:fsw_store/shared/widgets/cached_network_image_widget.dart';
 import 'package:get/get.dart';
+import 'package:animations/animations.dart';
 
 class ProductImages extends StatelessWidget {
   final List<String> imageUrls;
@@ -19,15 +21,28 @@ class ProductImages extends StatelessWidget {
       builder: (controller) {
         return Column(
           children: [
-            Container(
-              color: AppColors.onSecondaryContainer,
-              padding: const EdgeInsets.all(24),
-              child: CachedNetworkImageWidget(
-                imageUrl: controller.currentImage,
-                height: size.height / 4,
-                width: double.infinity,
-                // fit: BoxFit.contain,
-              ),
+            OpenContainer(
+              closedElevation: 0,
+              closedColor: Colors.transparent,
+              closedShape: const RoundedRectangleBorder(),
+              closedBuilder: (context, action) {
+                return Container(
+                  color: AppColors.onSecondaryContainer,
+                  padding: const EdgeInsets.all(24),
+                  child: CachedNetworkImageWidget(
+                    imageUrl: controller.currentImage,
+                    height: size.height / 4,
+                    width: double.infinity,
+                    // fit: BoxFit.contain,
+                  ),
+                );
+              },
+              openBuilder: (context, action) {
+                return GalleryImageScreen(
+                  initialPage: controller.initialPage,
+                  imageUrls: imageUrls,
+                );
+              },
             ),
             const SizedBox(height: 16),
             SizedBox(

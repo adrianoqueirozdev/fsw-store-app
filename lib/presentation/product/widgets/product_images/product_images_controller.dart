@@ -6,11 +6,17 @@ class ProductImagesController extends GetxController {
   ProductImagesController({required this.imageUrls});
 
   final _currentImage = "".obs;
+  final _initialPage = 0.obs;
 
   String get currentImage => _currentImage.value;
+  int get initialPage => _initialPage.value;
 
   void changeCurrentImage(String imageUrl) {
     _currentImage.value = imageUrl;
+
+    final index = imageUrls.indexWhere((element) => element == imageUrl);
+    _initialPage.value = index;
+
     update();
   }
 

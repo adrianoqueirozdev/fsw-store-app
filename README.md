@@ -32,6 +32,8 @@ Loja online
  - [build_runner](https://pub.dev/packages/build_runner)
  - [json_serializable](https://pub.dev/packages/json_serializable)
  - [flutter_animate](https://pub.dev/packages/flutter_animate): Usado para criar animações
+ - [photo_view](https://pub.dev/packages/photo_view): Usado para visualização de imagens
+ - [animations](https://pub.dev/packages/animations): Usado para animações prontas
     
   
 ## Capturas de Tela

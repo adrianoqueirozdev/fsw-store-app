@@ -45,7 +45,9 @@ Loja online
 
 ### Configurar as variáveis
 
-Adicione as variáveis de ambiente
+Crie dois arquivos _**.env.development**_ e _**.env.production**_ na raiz do projeto
+
+Configure as variáveis para cada ambiente
 
 ```env
 SUPABASE_PROJECT_URL=

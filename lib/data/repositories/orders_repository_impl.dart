@@ -12,7 +12,7 @@ class OrdersRepositoryImpl extends OrdersRepository {
         .from(DatabaseTables.order)
         .select('*, ${DatabaseTables.orderProduct}!inner(*, ${DatabaseTables.product}!inner(*))')
         .eq('userId', userId)
-        .order('createdAt') as List;
+        .order('createdAt');
 
     return data.map((order) => Order.fromJson(order)).toList();
   }
@@ -30,7 +30,7 @@ class OrdersRepositoryImpl extends OrdersRepository {
         })
         .select()
         .then((data) async {
-          final list = data as List;
+          final list = data;
 
           if (list.isNotEmpty) {
             final parsedOrder = Order.fromJson(list.first);

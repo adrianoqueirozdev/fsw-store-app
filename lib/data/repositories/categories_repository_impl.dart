@@ -8,17 +8,15 @@ class CategoriesRepositoryImpl implements CategoriesRepository {
   Future<List<Category>> getCategories() async {
     final data = await supabase.from(DatabaseTables.category).select();
 
-    final parsed = data as List;
+    final parsed = data;
 
     return parsed.map((e) => Category.fromJson(e)).toList();
   }
 
   @override
   Future<Category> getProductsByCategory(String slug) async {
-    final data = await supabase
-        .from(DatabaseTables.category)
-        .select('*, ${DatabaseTables.product}!inner(*)')
-        .eq('slug', slug) as List;
+    final data =
+        await supabase.from(DatabaseTables.category).select('*, ${DatabaseTables.product}!inner(*)').eq('slug', slug);
 
     return Category.fromJson(data.first);
   }

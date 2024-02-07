@@ -6,7 +6,7 @@ import 'package:fsw_store/shared/constants/database_tables.dart';
 class ProductsRepositoryImpl implements ProductsRepository {
   @override
   Future<List<Product>> getProductsOnOffer() async {
-    final data = await supabase.from(DatabaseTables.product).select().gt("discountPercentage", 0) as List;
+    final data = await supabase.from(DatabaseTables.product).select().gt("discountPercentage", 0);
 
     return data.map((e) => Product.fromJson(e)).toList();
   }
@@ -16,7 +16,7 @@ class ProductsRepositoryImpl implements ProductsRepository {
     final data = await supabase
         .from(DatabaseTables.product)
         .select('*, ${DatabaseTables.category}!inner(*)')
-        .eq('${DatabaseTables.category}.slug', 'keyboards') as List;
+        .eq('${DatabaseTables.category}.slug', 'keyboards');
 
     return data.map((e) => Product.fromJson(e)).toList();
   }
@@ -26,17 +26,15 @@ class ProductsRepositoryImpl implements ProductsRepository {
     final data = await supabase
         .from(DatabaseTables.product)
         .select('*, ${DatabaseTables.category}!inner(*)')
-        .eq('${DatabaseTables.category}.slug', 'mouses') as List;
+        .eq('${DatabaseTables.category}.slug', 'mouses');
 
     return data.map((e) => Product.fromJson(e)).toList();
   }
 
   @override
   Future<Product> getProduct(String id) async {
-    final data = await supabase
-        .from(DatabaseTables.product)
-        .select('*, ${DatabaseTables.category}!inner(*)')
-        .eq('id', id) as List;
+    final data =
+        await supabase.from(DatabaseTables.product).select('*, ${DatabaseTables.category}!inner(*)').eq('id', id);
     return Product.fromJson(data.first);
   }
 
@@ -45,7 +43,7 @@ class ProductsRepositoryImpl implements ProductsRepository {
     final data = await supabase
         .from(DatabaseTables.product)
         .select('*, ${DatabaseTables.category}!inner(*)')
-        .eq('${DatabaseTables.category}.slug', slug) as List;
+        .eq('${DatabaseTables.category}.slug', slug);
 
     // parse json to Product
     final recommendedProductsList = data.map((e) => Product.fromJson(e)).toList();

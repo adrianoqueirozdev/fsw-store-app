@@ -34,10 +34,10 @@ class CatalogList extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 32, top: 24, right: 32, bottom: 56),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [
                       AppColors.primary,
-                      const Color.fromRGBO(80, 51, 195, 0.3),
+                      Color.fromRGBO(80, 51, 195, 0.3),
                     ],
                     begin: Alignment.bottomLeft,
                     end: Alignment.topRight,

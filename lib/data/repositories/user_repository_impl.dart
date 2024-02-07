@@ -16,7 +16,7 @@ class UserRepositoryImpl extends UserRepository {
 
   @override
   Future<CurrentUser?> getUser(String userId) async {
-    final data = await supabase.from(DatabaseTables.user).select().eq('id', userId) as List;
+    final data = await supabase.from(DatabaseTables.user).select().eq('id', userId);
 
     if (data.isNotEmpty) {
       return CurrentUser.fromJson(data.first);

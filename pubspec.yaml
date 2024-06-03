@@ -4,7 +4,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.5 <4.0.0'
+  sdk: ">=3.1.5 <4.0.0"
 
 dependencies:
   flutter:
@@ -64,4 +64,3 @@ flutter:
         - asset: lib/resources/fonts/Poppins/Poppins-SemiBold.ttf
         - asset: lib/resources/fonts/Poppins/Poppins-SemiBoldItalic.ttf
           style: normal
-  

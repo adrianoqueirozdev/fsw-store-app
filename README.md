@@ -4,7 +4,7 @@ Loja online
 
 ## Tecnologias
 
-- Framework: [**Flutter**](https://flutter.dev/)
+- Framework: [**Flutter**](https://flutter.dev/): 3.19.0
 - Autenticação: [**Firebase**](https://firebase.google.com/?hl=pt-br)
 - Banco de Dados: [**Supabase**](https://supabase.com/)
 - Integração com pagamento: [**Stripe**](https://stripe.com/br)

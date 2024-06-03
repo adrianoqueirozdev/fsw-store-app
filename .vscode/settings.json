@@ -6,5 +6,6 @@
     "supabase",
     "Supabase"
   ],
-  "java.configuration.updateBuildConfiguration": "interactive"
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "dart.flutterSdkPath": "~/fvm/versions/stable"
 }

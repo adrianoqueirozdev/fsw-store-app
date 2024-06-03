@@ -4,15 +4,16 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:fsw_store/main.dart';
 
 class StripePaymentHandleService {
-  static Future<void> initPaymentSheet(String clientSecret) async {
+  static Future<void> initPaymentSheet(String clientSecret, bool isDarkMode) async {
     try {
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
-          appearance: const PaymentSheetAppearance(
+          appearance: PaymentSheetAppearance(
             colors: PaymentSheetAppearanceColors(
               primary: AppColors.primary,
+              background: isDarkMode ? AppColors.secondary : Colors.white,
             ),
-            primaryButton: PaymentSheetPrimaryButtonAppearance(
+            primaryButton: const PaymentSheetPrimaryButtonAppearance(
               colors: PaymentSheetPrimaryButtonTheme(
                 light: PaymentSheetPrimaryButtonThemeColors(
                   text: Colors.white,
@@ -22,9 +23,9 @@ class StripePaymentHandleService {
             ),
           ),
           customFlow: false,
-          style: ThemeMode.light,
           paymentIntentClientSecret: clientSecret,
           merchantDisplayName: "FSW Store",
+          style: ThemeMode.light,
         ),
       );
     } catch (e) {

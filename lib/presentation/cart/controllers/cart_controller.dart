@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:fsw_store/domain/usecases/orders_usecase.dart';
@@ -30,6 +31,9 @@ class CartController extends GetxController {
 
   @override
   void onInit() {
+    var brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     cartCubit = context.read<CartCubit>();
     _stripeUsecase = StripeUsecase();
     _ordersBloc = OrdersBloc();
@@ -41,7 +45,7 @@ class CartController extends GetxController {
 
         if (orderId != null) {
           final data = await _stripeUsecase.createPaymentIntent(currencyToCents(total), orderId);
-          await StripePaymentHandleService.initPaymentSheet(data['client_secret']);
+          await StripePaymentHandleService.initPaymentSheet(data['client_secret'], isDarkMode);
 
           try {
             await Stripe.instance.presentPaymentSheet();
